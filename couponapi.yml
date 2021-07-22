@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: couponapi
+  labels:
+    app: couponapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: couponapi
+  template:
+    metadata:
+      labels:
+        app: couponapi
+    spec:
+      containers:
+      - name: couponapi
+        image: containerimagebuild.azurecr.io/infyshopcouponapi:v3
+        ports:
+        - containerPort: 80
+        env:
+          - name: IdentityServerAuthority
+            value: http://identityserver-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: couponapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: couponapi
+  ports:
+    - port: 80

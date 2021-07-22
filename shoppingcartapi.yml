@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shoppingcartapi
+  labels:
+    app: shoppingcartapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppingcartapi
+  template:
+    metadata:
+      labels:
+        app: shoppingcartapi
+    spec:
+      containers:
+      - name: shoppingcartapi
+        image: containerimagebuild.azurecr.io/infyshopshoppingcartapi:v3
+        ports:
+        - containerPort: 80
+        env:
+          - name: IdentityServerAuthority
+            value: http://identityserver-service
+          - name: ServiceUrls__CouponAPI
+            value: http://couponapi-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: shoppingcartapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: shoppingcartapi
+  ports:
+    - port: 80

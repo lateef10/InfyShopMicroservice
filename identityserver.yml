@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identityserver
+  labels:
+    app: identityserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: identityserver
+  template:
+    metadata:
+      labels:
+        app: identityserver
+    spec:
+      containers:
+      - name: identityserver
+        image: containerimagebuild.azurecr.io/infyshopidentity:v1
+        ports:
+        - containerPort: 80
+        env:
+          - name: RedirectUris
+            value: http://20.81.14.55/signin-oidc
+          - name: PostLogoutRedirectUris
+            value: http://20.81.14.55/signout-callback-oidc
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: identityserver-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: identityserver
+  ports:
+    - port: 80

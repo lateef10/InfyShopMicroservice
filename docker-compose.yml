@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  infyshop.couponapi:
+    image: ${DOCKER_REGISTRY-}infyshopcouponapi
+    build:
+      context: .
+      dockerfile: InfyShop.CouponAPI/Dockerfile
+
+  infyshop.orderapi:
+    image: ${DOCKER_REGISTRY-}infyshoporderapi
+    build:
+      context: .
+      dockerfile: InfyShop.OrderAPI/Dockerfile
+
+
+  infyshop.paymentapi:
+    image: ${DOCKER_REGISTRY-}infyshoppaymentapi
+    build:
+      context: .
+      dockerfile: InfyShop.PaymentAPI/Dockerfile
+
+
+  infyshop.productapi:
+    image: ${DOCKER_REGISTRY-}infyshopproductapi
+    build:
+      context: .
+      dockerfile: InfyShop.ProductAPI/Dockerfile
+

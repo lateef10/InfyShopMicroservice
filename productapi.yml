@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productapi
+  labels:
+    app: productapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productapi
+  template:
+    metadata:
+      labels:
+        app: productapi
+    spec:
+      containers:
+      - name: productapi
+        image: containerimagebuild.azurecr.io/infyshopproductapi:v4
+        ports:
+        - containerPort: 80
+        env:
+          - name: IdentityServerAuthority
+            value: http://identityserver-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: productapi-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: productapi
+  ports:
+    - port: 80

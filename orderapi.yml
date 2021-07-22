@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderapi
+  labels:
+    app: orderapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderapi
+  template:
+    metadata:
+      labels:
+        app: orderapi
+    spec:
+      containers:
+      - name: orderapi
+        image: containerimagebuild.azurecr.io/infyshoporderapi:v2
+        ports:
+        - containerPort: 80
+        env:
+          - name: IdentityServerAuthority
+            value: http://identityserver-service

@@ -1,0 +1,37 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infyshoppingcartapi
+  labels:
+    app: infyshoppingcartapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: infyshoppingcartapi
+  template:
+    metadata:
+      labels:
+        app: infyshoppingcartapi
+    spec:
+      containers:
+      - name: infyshoppingcartapi
+        image: infyshopshoppingcartapi
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: infyshoppingcartapi-service
+spec:
+  type: NodePort
+  selector:
+    app: infyshoppingcartapi
+  ports:
+    - port: 8000
+      targetPort: 80
+      nodePort: 31000

@@ -53,7 +53,7 @@ namespace InfyShop.Identity
 
             services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddScoped<IProfileService, ProfileService>();
-            builder.AddDeveloperSigningCredential();
+            builder.AddDeveloperSigningCredential(); //For Development Purpose, use AddSigningCredential() for PROD
 
             services.AddControllersWithViews();
         }

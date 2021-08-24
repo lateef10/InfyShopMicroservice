@@ -17,6 +17,7 @@ spec:
       containers:
       - name: shoppingcartapi
         image: infyshopshoppingcartapi
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         env:
@@ -25,7 +26,7 @@ spec:
           - name: ServiceUrls__CouponAPI
             value: https://couponapi-service
           - name: ConnectionStrings__ProductConnectionString
-            value: Server=.\\SQLEXPRESS;Database=InfyShoppingCartAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+            value: Server=mssqldb-service;Database=InfyShoppingCartAPI;Trusted_Connection=True;MultipleActiveResultSets=true
 
 ---
 

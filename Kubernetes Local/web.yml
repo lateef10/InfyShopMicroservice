@@ -17,6 +17,7 @@ spec:
       containers:
       - name: webfrontend
         image: infshopweb
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         env:
@@ -36,7 +37,7 @@ kind: Service
 metadata:
   name: webfrontend-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: webfrontend
   ports:

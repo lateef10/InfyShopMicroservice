@@ -50,6 +50,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes Local", "Kuberne
 	ProjectSection(SolutionItems) = preProject
 		Kubernetes Local\couponapi.yml = Kubernetes Local\couponapi.yml
 		Kubernetes Local\identityserver.yml = Kubernetes Local\identityserver.yml
+		Kubernetes Local\mssql.yml = Kubernetes Local\mssql.yml
 		Kubernetes Local\orderapi.yml = Kubernetes Local\orderapi.yml
 		Kubernetes Local\paymentapi.yml = Kubernetes Local\paymentapi.yml
 		Kubernetes Local\productapi.yml = Kubernetes Local\productapi.yml

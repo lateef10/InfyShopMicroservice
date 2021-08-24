@@ -17,13 +17,14 @@ spec:
       containers:
       - name: productapi
         image: infyshopproductapi
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         env:
           - name: IdentityServerAuthority
             value: https://identityserver-service
           - name: ConnectionStrings__ProductConnectionString
-            value: Server=.\\SQLEXPRESS;Database=InfyProductAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+            value: Server=mssqldb-service;Database=InfyProductAPI;Trusted_Connection=True;MultipleActiveResultSets=true
 
 ---
 

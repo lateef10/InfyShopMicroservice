@@ -17,12 +17,13 @@ spec:
       containers:
       - name: orderapi
         image: infyshoporderapi
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         env:
           - name: IdentityServerAuthority
             value: https://identityserver-service
           - name: ConnectionStrings__OrderConnectionString
-            value: Server=.\\SQLEXPRESS;Database=InfyOrderAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+            value: Server=mssqldb-service;Database=InfyOrderAPI;Trusted_Connection=True;MultipleActiveResultSets=true
           - name: ServiceBusConnectionString
             value: Endpoint=sb://infyshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9oFOcxkTyMe8tQ2nk8cwgFvTDaZ6xu65DxU95XeaUsw=

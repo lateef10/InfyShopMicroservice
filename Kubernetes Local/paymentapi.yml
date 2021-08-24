@@ -17,6 +17,7 @@ spec:
       containers:
       - name: paymentapi
         image: infyshoppaymentapi
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
         env:

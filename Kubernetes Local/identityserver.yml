@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identityserver
+  labels:
+    app: identityserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: identityserver
+  template:
+    metadata:
+      labels:
+        app: identityserver
+    spec:
+      containers:
+      - name: identityserver
+        image: infyshopidentity
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+          - name: RedirectUris
+            value: https://webfrontend-service/signin-oidc
+          - name: PostLogoutRedirectUris
+            value: https://webfrontend-service/signout-callback-oidc
+          - name: ConnectionStrings__IdentityServerConnectionString
+            value: Server=.\\SQLEXPRESS;Database=InfyIdentityServer;Trusted_Connection=True;MultipleActiveResultSets=true
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: identityserver-service
+spec:
+  type: NodePort
+  selector:
+    app: identityserver
+  ports:
+    - port: 80

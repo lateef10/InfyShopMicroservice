@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: couponapi
+  labels:
+    app: couponapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: couponapi
+  template:
+    metadata:
+      labels:
+        app: couponapi
+    spec:
+      containers:
+      - name: couponapi
+        image: infyshopcouponapi
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        env:
+          - name: IdentityServerAuthority
+            value: https://identityserver-service
+          - name: ConnectionStrings__IdentityServerConnectionString
+            value: Server=.\\SQLEXPRESS;Database=InfyCouponAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: couponapi-service
+spec:
+  type: NodePort
+  selector:
+    app: couponapi
+  ports:
+    - port: 80

@@ -41,7 +41,7 @@ namespace InfyShop.Identity
 
             var builder = services.AddIdentityServer(options =>
             {
-                options.Events.RaiseErrorEvents = true;
+                options.Events.RaiseErrorEvents = true; //remove for prod
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;

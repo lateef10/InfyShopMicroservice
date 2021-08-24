@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentapi
+  labels:
+    app: paymentapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paymentapi
+  template:
+    metadata:
+      labels:
+        app: paymentapi
+    spec:
+      containers:
+      - name: paymentapi
+        image: infyshoppaymentapi
+        ports:
+        - containerPort: 80
+        env:
+          - name: ServiceBusConnectionString
+            value: Endpoint=sb://infyshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9oFOcxkTyMe8tQ2nk8cwgFvTDaZ6xu65DxU95XeaUsw=
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: paymentapi-service
+spec:
+  type: NodePort
+  selector:
+    app: paymentapi
+  ports:
+    - port: 80

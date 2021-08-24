@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderapi
+  labels:
+    app: orderapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderapi
+  template:
+    metadata:
+      labels:
+        app: orderapi
+    spec:
+      containers:
+      - name: orderapi
+        image: infyshoporderapi
+        ports:
+        - containerPort: 80
+        env:
+          - name: IdentityServerAuthority
+            value: https://identityserver-service
+          - name: ConnectionStrings__OrderConnectionString
+            value: Server=.\\SQLEXPRESS;Database=InfyOrderAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+          - name: ServiceBusConnectionString
+            value: Endpoint=sb://infyshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9oFOcxkTyMe8tQ2nk8cwgFvTDaZ6xu65DxU95XeaUsw=

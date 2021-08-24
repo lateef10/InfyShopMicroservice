@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webfrontend
+  labels:
+    app: webfrontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webfrontend
+  template:
+    metadata:
+      labels:
+        app: webfrontend
+    spec:
+      containers:
+      - name: webfrontend
+        image: infshopweb
+        ports:
+        - containerPort: 80
+        env:
+          - name: ServiceUrls__IdentityAPI
+            value: https://identityserver-service
+          - name: ServiceUrls__ProductAPI
+            value: https://productapi-service
+          - name: ServiceUrls__ShoppingCartAPI
+            value: https://shoppingcartapi-service
+          - name: ServiceUrls__CouponAPI
+            value: https://couponapi-service
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: webfrontend-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: webfrontend
+  ports:
+    - port: 80

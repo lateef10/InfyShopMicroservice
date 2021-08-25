@@ -26,7 +26,7 @@ spec:
           - name: ServiceUrls__CouponAPI
             value: https://couponapi-service
           - name: ConnectionStrings__ProductConnectionString
-            value: Server=mssqldb-service;Database=InfyShoppingCartAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+            value: Server=mssqldb-service,1433;Database=InfyShoppingCartAPI;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 
 ---
 

@@ -23,10 +23,11 @@ namespace InfyShop.CouponAPI.DbContexts
                         //Using Polly retry policy
                         var retry = Policy.Handle<SqlException>()
                                 .WaitAndRetry(
-                                    retryCount: 5,
+                                    retryCount: 3,
                                     sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), // 2,4,8,16,32 sc
                                     onRetry: (exception, retryCount, context) =>
                                     {
+                                        Console.WriteLine($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}, due to: {exception}.");
                                         //logger.LogError($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}, due to: {exception}.");
                                     });
                         

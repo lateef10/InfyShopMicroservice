@@ -24,7 +24,7 @@ spec:
           - name: IdentityServerAuthority
             value: https://identityserver-service
           - name: ConnectionStrings__IdentityServerConnectionString
-            value: Server=.\\SQLEXPRESS;Database=InfyCouponAPI;Trusted_Connection=True;MultipleActiveResultSets=true
+            value: Server=mssqldb-service;Database=InfyCouponAPI;Trusted_Connection=True;MultipleActiveResultSets=true
 
 ---
 

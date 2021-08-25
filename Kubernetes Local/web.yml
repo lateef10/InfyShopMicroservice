@@ -24,7 +24,7 @@ spec:
           - name: environmentVariables__ASPNETCORE_ENVIRONMENT
             value: Development
           - name: ServiceUrls__IdentityAPI
-            value: http://localhost:32591
+            value: http://identityserver-service
           - name: ServiceUrls__ProductAPI
             value: http://productapi-service
           - name: ServiceUrls__ShoppingCartAPI

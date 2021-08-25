@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace InfyShop.CouponAPI.DbContexts
+namespace InfyShop.ProductAPI.DbContexts
 {
     public static class MigrationManager
     {

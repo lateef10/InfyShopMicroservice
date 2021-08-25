@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace InfShop.Web
 {
@@ -45,7 +46,13 @@ namespace InfShop.Web
                 options.DefaultScheme = "Cookies";
                 options.DefaultChallengeScheme = "oidc";
             })
-                .AddCookie("Cookies", c => c.ExpireTimeSpan = TimeSpan.FromMinutes(10))
+                .AddCookie("Cookies", c =>
+                {
+                    c.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                    c.Cookie.HttpOnly = true;
+                    c.Cookie.SameSite = SameSiteMode.None;
+                    c.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                })
                 .AddOpenIdConnect("oidc", options =>
                 {
                     options.Authority = Configuration[Constants.ServiceUrls + ":" + Constants.IdentityAPI];

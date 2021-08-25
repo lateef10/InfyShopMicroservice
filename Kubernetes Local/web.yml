@@ -21,8 +21,10 @@ spec:
         ports:
         - containerPort: 80
         env:
+          - name: environmentVariables__ASPNETCORE_ENVIRONMENT
+            value: Development
           - name: ServiceUrls__IdentityAPI
-            value: http://identityserver-service
+            value: http://localhost:32591
           - name: ServiceUrls__ProductAPI
             value: http://productapi-service
           - name: ServiceUrls__ShoppingCartAPI

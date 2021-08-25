@@ -1,4 +1,4 @@
-using Duende.IdentityServer.Services;
+using IdentityServer4.Services;
 using InfyShop.Identity.Common;
 using InfyShop.Identity.DbContexts;
 using InfyShop.Identity.Initializer;

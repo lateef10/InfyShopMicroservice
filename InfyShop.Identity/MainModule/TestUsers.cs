@@ -6,8 +6,8 @@ using IdentityModel;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
-using Duende.IdentityServer;
-using Duende.IdentityServer.Test;
+using IdentityServer4;
+using IdentityServer4.Test;
 
 namespace IdentityServerHost.Quickstart.UI
 {

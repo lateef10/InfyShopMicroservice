@@ -22,9 +22,9 @@ spec:
         - containerPort: 80
         env:
           - name: RedirectUris
-            value: https://webfrontend-service/signin-oidc
+            value: http://webfrontend-service/signin-oidc
           - name: PostLogoutRedirectUris
-            value: https://webfrontend-service/signout-callback-oidc
+            value: http://webfrontend-service/signout-callback-oidc
           - name: ConnectionStrings__IdentityServerConnectionString
             value: Server=mssqldb-service,1433;Database=InfyIdentityServer;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 

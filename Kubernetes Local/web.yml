@@ -22,13 +22,13 @@ spec:
         - containerPort: 80
         env:
           - name: ServiceUrls__IdentityAPI
-            value: https://identityserver-service
+            value: http://identityserver-service
           - name: ServiceUrls__ProductAPI
-            value: https://productapi-service
+            value: http://productapi-service
           - name: ServiceUrls__ShoppingCartAPI
-            value: https://shoppingcartapi-service
+            value: http://shoppingcartapi-service
           - name: ServiceUrls__CouponAPI
-            value: https://couponapi-service
+            value: http://couponapi-service
 
 ---
 

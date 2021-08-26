@@ -1,3 +1,5 @@
+using IdentityServer4.EntityFramework.DbContexts;
+using IdentityServer4.EntityFramework.Mappers;
 using IdentityServer4.Services;
 using InfyShop.Identity.Common;
 using InfyShop.Identity.DbContexts;
@@ -15,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace InfyShop.Identity
@@ -34,10 +37,16 @@ namespace InfyShop.Identity
             Constants.RedirectUris = Configuration[Constants.RedirectUrisStr];
             Constants.PostLogoutRedirectUris = Configuration[Constants.PostLogoutRedirectUrisStr];
 
+
+            var connectionString = Configuration.GetConnectionString(Constants.IdentityServerConnectionString);
+
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(Constants.IdentityServerConnectionString)));
+                options.UseSqlServer(connectionString));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+
+            var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             var builder = services.AddIdentityServer(options =>
             {
@@ -46,13 +55,27 @@ namespace InfyShop.Identity
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
                 options.EmitStaticAudienceClaim = true;
-            }).AddInMemoryIdentityResources(SD.IdentityResources)
-            .AddInMemoryApiScopes(SD.ApiScopes)
-            .AddInMemoryClients(SD.Clients)
+            })
+             .AddConfigurationStore(options =>
+             {
+                 options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                     sql => sql.MigrationsAssembly(migrationsAssembly));
+             })
+            .AddOperationalStore(options =>
+            {
+                options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                    sql => sql.MigrationsAssembly(migrationsAssembly));
+            })
             .AddAspNetIdentity<ApplicationUser>();
+
+            /*.AddInMemoryIdentityResources(SD.IdentityResources)
+           .AddInMemoryApiScopes(SD.ApiScopes)
+           .AddInMemoryClients(SD.Clients)
+           .AddAspNetIdentity<ApplicationUser>();*/
 
             services.AddScoped<IDbInitializer, DbInitializer>();
             services.AddScoped<IProfileService, ProfileService>();
+
             builder.AddDeveloperSigningCredential(); //For Development Purpose, use AddSigningCredential() for PROD
 
             services.AddControllersWithViews();
@@ -61,6 +84,8 @@ namespace InfyShop.Identity
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
+            InitializeDatabase(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -86,6 +111,52 @@ namespace InfyShop.Identity
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void InitializeDatabase(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+                var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+                context.Database.Migrate();
+                if (!context.Clients.Any())
+                {
+                    foreach (var client in SD.Clients)
+                    {
+                        context.Clients.Add(client.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                if (!context.IdentityResources.Any())
+                {
+                    foreach (var resource in SD.IdentityResources)
+                    {
+                        context.IdentityResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+
+                /*if (!context.ApiResources.Any())
+                {
+                    foreach (var resource in Config.ApiResources)
+                    {
+                        context.ApiResources.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }*/
+
+                if (!context.ApiScopes.Any())
+                {
+                    foreach (var resource in SD.ApiScopes)
+                    {
+                        context.ApiScopes.Add(resource.ToEntity());
+                    }
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }

@@ -24,9 +24,9 @@ spec:
           - name: environmentVariables__ASPNETCORE_ENVIRONMENT
             value: Development
           - name: RedirectUris
-            value: http://webfrontend-service/signin-oidc
+            value: http://localhost:31650/signin-oidc
           - name: PostLogoutRedirectUris
-            value: http://webfrontend-service/signout-callback-oidc
+            value: http://localhost:31650/signout-callback-oidc
           - name: ConnectionStrings__IdentityServerConnectionString
             value: Server=mssqldb-service,1433;Database=InfyIdentityServer;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 

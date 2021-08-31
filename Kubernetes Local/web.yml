@@ -26,11 +26,11 @@ spec:
           - name: ServiceUrls__IdentityAPI
             value: http://identityserver-service
           - name: ServiceUrls__ProductAPI
-            value: http://productapi-service
+            value: http://apigateway-service
           - name: ServiceUrls__ShoppingCartAPI
-            value: http://shoppingcartapi-service
+            value: http://apigateway-service
           - name: ServiceUrls__CouponAPI
-            value: http://couponapi-service
+            value: http://apigateway-service
 
 ---
 

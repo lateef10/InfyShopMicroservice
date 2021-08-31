@@ -49,6 +49,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes Local", "Kubernetes Local", "{0B8B55D1-3DC9-42C9-808D-C5977F7BBC6A}"
 	ProjectSection(SolutionItems) = preProject
 		Kubernetes Local\couponapi.yml = Kubernetes Local\couponapi.yml
+		Kubernetes Local\gateway.yml = Kubernetes Local\gateway.yml
 		Kubernetes Local\identityserver.yml = Kubernetes Local\identityserver.yml
 		Kubernetes Local\mssql.yml = Kubernetes Local\mssql.yml
 		Kubernetes Local\orderapi.yml = Kubernetes Local\orderapi.yml

@@ -61,6 +61,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes Local", "Kuberne
 		Kubernetes Local\web.yml = Kubernetes Local\web.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "manifests", "manifests", "{990EDA9D-04B5-4628-9627-B4A172ABEAFB}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

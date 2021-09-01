@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gateway", "Gateway", "{3284
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfyShop.GatewaySolution", "InfyShop.GatewaySolution\InfyShop.GatewaySolution.csproj", "{A0D1136D-B47C-44FD-96E3-D8462770B6E0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure Kubernetes", "Azure Kubernetes", "{356F5E8B-E765-4746-B64C-C683ECB64D1D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureKubernetes", "AzureKubernetes", "{356F5E8B-E765-4746-B64C-C683ECB64D1D}"
 	ProjectSection(SolutionItems) = preProject
 		Azure Kubernetes\couponapi.yml = Azure Kubernetes\couponapi.yml
 		Azure Kubernetes\gateway.yml = Azure Kubernetes\gateway.yml
@@ -61,10 +61,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes Local", "Kuberne
 		Kubernetes Local\web.yml = Kubernetes Local\web.yml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "manifests", "manifests", "{990EDA9D-04B5-4628-9627-B4A172ABEAFB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{1DF1D6DD-74B2-44BB-AF7B-ECA4B4089767}"
 	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
-		manifests\web.yml = manifests\web.yml
+		Pipelines\web-pipeline.yml = Pipelines\web-pipeline.yml
 	EndProjectSection
 EndProject
 Global

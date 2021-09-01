@@ -3,7 +3,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- master
+    branches:
+        include:
+        - master
+    paths:
+        include:
+        - InfShop.Web/*
+        - AzureKubernetes/web.yml
 
 resources:
 - repo: self
@@ -42,8 +48,8 @@ stages:
         tags: |
           $(tag)
 
-    - upload: manifests
-      artifact: manifests
+    - upload: AzureKubernetes
+      artifact: AzureKubernetes
 
 - stage: Deploy
   displayName: Deploy stage
@@ -71,7 +77,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/web.yml
+                $(Pipeline.Workspace)/AzureKubernetes/web.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |

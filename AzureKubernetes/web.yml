@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webfrontend
-        image: containerimagebuild.azurecr.io/infshopweb:v1
+        image: containerimagebuild.azurecr.io/infshopweb
         ports:
         - containerPort: 80
         env:

@@ -37,15 +37,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InfyShop.GatewaySolution", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureKubernetes", "AzureKubernetes", "{356F5E8B-E765-4746-B64C-C683ECB64D1D}"
 	ProjectSection(SolutionItems) = preProject
-		Azure Kubernetes\couponapi.yml = Azure Kubernetes\couponapi.yml
-		Azure Kubernetes\gateway.yml = Azure Kubernetes\gateway.yml
-		Azure Kubernetes\identityserver.yml = Azure Kubernetes\identityserver.yml
-		Azure Kubernetes\mssql.yml = Azure Kubernetes\mssql.yml
-		Azure Kubernetes\orderapi.yml = Azure Kubernetes\orderapi.yml
-		Azure Kubernetes\paymentapi.yml = Azure Kubernetes\paymentapi.yml
-		Azure Kubernetes\productapi.yml = Azure Kubernetes\productapi.yml
-		Azure Kubernetes\shoppingcartapi.yml = Azure Kubernetes\shoppingcartapi.yml
-		Azure Kubernetes\web.yml = Azure Kubernetes\web.yml
+		AzureKubernetes\couponapi.yml = AzureKubernetes\couponapi.yml
+		AzureKubernetes\gateway.yml = AzureKubernetes\gateway.yml
+		AzureKubernetes\identityserver.yml = AzureKubernetes\identityserver.yml
+		AzureKubernetes\mssql.yml = AzureKubernetes\mssql.yml
+		AzureKubernetes\orderapi.yml = AzureKubernetes\orderapi.yml
+		AzureKubernetes\paymentapi.yml = AzureKubernetes\paymentapi.yml
+		AzureKubernetes\productapi.yml = AzureKubernetes\productapi.yml
+		AzureKubernetes\shoppingcartapi.yml = AzureKubernetes\shoppingcartapi.yml
+		AzureKubernetes\web.yml = AzureKubernetes\web.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes Local", "Kubernetes Local", "{0B8B55D1-3DC9-42C9-808D-C5977F7BBC6A}"

@@ -20,7 +20,7 @@ variables:
   dockerRegistryServiceConnection: 'ac84c351-4ba8-48f9-9c9c-c8ae3154ff54'
   imageRepository: 'infshopweb'
   containerRegistry: 'containerimagebuild.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'InfShop.Web/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'containerimagebuild1627b785-auth'
 

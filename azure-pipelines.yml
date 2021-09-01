@@ -71,7 +71,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/Azure Kubernetes/web.yml
+                $(Pipeline.Workspace)/manifests/web.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |

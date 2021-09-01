@@ -64,6 +64,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "manifests", "manifests", "{990EDA9D-04B5-4628-9627-B4A172ABEAFB}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
+		manifests\web.yml = manifests\web.yml
 	EndProjectSection
 EndProject
 Global

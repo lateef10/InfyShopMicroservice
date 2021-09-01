@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: shoppingcartapi
-        image: containerimagebuild.azurecr.io/infyshopshoppingcartapi:v3
+        image: containerimagebuild.azurecr.io/infyshopshoppingcartapi:v1
         ports:
         - containerPort: 80
         env:
@@ -24,6 +24,8 @@ spec:
             value: http://identityserver-service
           - name: ServiceUrls__CouponAPI
             value: http://couponapi-service
+          - name: ConnectionStrings__ShoppingCartConnectionString
+            value: Server=mssqldb-service,1433;Database=InfyShoppingCartAPI;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 
 ---
 

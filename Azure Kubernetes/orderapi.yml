@@ -16,9 +16,13 @@ spec:
     spec:
       containers:
       - name: orderapi
-        image: containerimagebuild.azurecr.io/infyshoporderapi:v2
+        image: containerimagebuild.azurecr.io/infyshoporderapi:v1
         ports:
         - containerPort: 80
         env:
           - name: IdentityServerAuthority
             value: http://identityserver-service
+          - name: ConnectionStrings__OrderConnectionString
+            value: Server=mssqldb-service,1433;Database=InfyOrderAPI;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
+          - name: ServiceBusConnectionString
+            value: Endpoint=sb://infyshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9oFOcxkTyMe8tQ2nk8cwgFvTDaZ6xu65DxU95XeaUsw=

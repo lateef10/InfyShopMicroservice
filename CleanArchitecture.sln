@@ -38,7 +38,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure Kubernetes", "Azure Kubernetes", "{356F5E8B-E765-4746-B64C-C683ECB64D1D}"
 	ProjectSection(SolutionItems) = preProject
 		Azure Kubernetes\couponapi.yml = Azure Kubernetes\couponapi.yml
+		Azure Kubernetes\gateway.yml = Azure Kubernetes\gateway.yml
 		Azure Kubernetes\identityserver.yml = Azure Kubernetes\identityserver.yml
+		Azure Kubernetes\mssql.yml = Azure Kubernetes\mssql.yml
 		Azure Kubernetes\orderapi.yml = Azure Kubernetes\orderapi.yml
 		Azure Kubernetes\paymentapi.yml = Azure Kubernetes\paymentapi.yml
 		Azure Kubernetes\productapi.yml = Azure Kubernetes\productapi.yml

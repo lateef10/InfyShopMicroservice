@@ -16,12 +16,14 @@ spec:
     spec:
       containers:
       - name: couponapi
-        image: containerimagebuild.azurecr.io/infyshopcouponapi:v3
+        image: containerimagebuild.azurecr.io/infyshopcouponapi:v1
         ports:
         - containerPort: 80
         env:
           - name: IdentityServerAuthority
             value: http://identityserver-service
+          - name: ConnectionStrings__CouponConnectionString
+            value: Server=mssqldb-service,1433;Database=InfyCouponAPI;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 
 ---
 

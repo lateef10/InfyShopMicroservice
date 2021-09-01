@@ -19,6 +19,9 @@ spec:
         image: containerimagebuild.azurecr.io/infyshoppaymentapi:v1
         ports:
         - containerPort: 80
+        env:
+          - name: ServiceBusConnectionString
+            value: Endpoint=sb://infyshop.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=9oFOcxkTyMe8tQ2nk8cwgFvTDaZ6xu65DxU95XeaUsw=
 
 ---
 

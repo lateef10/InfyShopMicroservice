@@ -16,18 +16,18 @@ spec:
     spec:
       containers:
       - name: webfrontend
-        image: containerimagebuild.azurecr.io/infshopweb:v2
+        image: containerimagebuild.azurecr.io/infshopweb:v1
         ports:
         - containerPort: 80
         env:
           - name: ServiceUrls__IdentityAPI
-            value: http://20.84.10.55
+            value: http://52.190.31.234
           - name: ServiceUrls__ProductAPI
-            value: http://productapi-service
+            value: http://apigateway-service
           - name: ServiceUrls__ShoppingCartAPI
-            value: http://shoppingcartapi-service
+            value: http://apigateway-service
           - name: ServiceUrls__CouponAPI
-            value: http://couponapi-service
+            value: http://apigateway-service
 
 ---
 

@@ -21,9 +21,11 @@ spec:
         - containerPort: 80
         env:
           - name: RedirectUris
-            value: http://20.81.14.55/signin-oidc
+            value: http://52.190.29.35/signin-oidc
           - name: PostLogoutRedirectUris
-            value: http://20.81.14.55/signout-callback-oidc
+            value: http://52.190.29.35/signout-callback-oidc
+          - name: ConnectionStrings__IdentityServerConnectionString
+            value: Server=mssqldb-service,1433;Database=InfyIdentityServer;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 
 ---
 

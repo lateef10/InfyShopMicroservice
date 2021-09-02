@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: identityserver
-        image: containerimagebuild.azurecr.io/infyshopidentity:v1
+        image: containerimagebuild.azurecr.io/infyshopidentity
         ports:
         - containerPort: 80
         env:

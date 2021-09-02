@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: apigateway
-        image: containerimagebuild.azurecr.io/infyshopgatewaysolution:v1
+        image: containerimagebuild.azurecr.io/infyshopgatewaysolution
         ports:
         - containerPort: 80
         env:
@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: apigateway-service
 spec:
-  type: LoadBalancer
+#  type: LoadBalancer
   selector:
     app: apigateway
   ports:

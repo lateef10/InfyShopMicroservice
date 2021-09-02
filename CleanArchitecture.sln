@@ -64,6 +64,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{1DF1D6DD-74B2-44BB-AF7B-ECA4B4089767}"
 	ProjectSection(SolutionItems) = preProject
 		Pipelines\couponapi-pipeline.yml = Pipelines\couponapi-pipeline.yml
+		Pipelines\gateway-pipeline.yml = Pipelines\gateway-pipeline.yml
 		Pipelines\web-pipeline.yml = Pipelines\web-pipeline.yml
 	EndProjectSection
 EndProject

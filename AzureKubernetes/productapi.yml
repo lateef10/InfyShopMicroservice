@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: productapi
-        image: containerimagebuild.azurecr.io/infyshopproductapi:v1
+        image: containerimagebuild.azurecr.io/infyshopproductapi
         ports:
         - containerPort: 80
         env:
@@ -32,7 +32,7 @@ kind: Service
 metadata:
   name: productapi-service
 spec:
-  type: LoadBalancer
+#  type: LoadBalancer
   selector:
     app: productapi
   ports:

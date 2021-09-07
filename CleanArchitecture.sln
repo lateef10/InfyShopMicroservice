@@ -66,6 +66,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{
 		Pipelines\couponapi-pipeline.yml = Pipelines\couponapi-pipeline.yml
 		Pipelines\gateway-pipeline.yml = Pipelines\gateway-pipeline.yml
 		Pipelines\identityserver-pipeline .yml = Pipelines\identityserver-pipeline .yml
+		Pipelines\orderapi-pipeline.yml = Pipelines\orderapi-pipeline.yml
 		Pipelines\web-pipeline.yml = Pipelines\web-pipeline.yml
 	EndProjectSection
 EndProject

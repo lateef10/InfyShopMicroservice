@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: shoppingcartapi
-        image: containerimagebuild.azurecr.io/infyshopshoppingcartapi:v1
+        image: containerimagebuild.azurecr.io/infyshopshoppingcartapi
         ports:
         - containerPort: 80
         env:

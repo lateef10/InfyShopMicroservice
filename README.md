@@ -15,5 +15,8 @@ OrderAPI-Pipeline
 ProductAPI-Pipeline
 [![Build Status](https://dev.azure.com/lateefrasheed10/Microservice_Architecture/_apis/build/status/productapi-pipeline?branchName=master)](https://dev.azure.com/lateefrasheed10/Microservice_Architecture/_build/latest?definitionId=8&branchName=master)
 
+ShoppingCart-Pipeline
+[![Build Status](https://dev.azure.com/lateefrasheed10/Microservice_Architecture/_apis/build/status/shoppingcartapi-pipeline?branchName=master)](https://dev.azure.com/lateefrasheed10/Microservice_Architecture/_build/latest?definitionId=9&branchName=master)
+
 Web-Pipeline
 [![Build Status](https://dev.azure.com/lateefrasheed10/Microservice_Architecture/_apis/build/status/web-pipeline?branchName=master)](https://dev.azure.com/lateefrasheed10/Microservice_Architecture/_build/latest?definitionId=2&branchName=master)

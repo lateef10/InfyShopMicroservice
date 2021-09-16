@@ -26,5 +26,3 @@ spec:
             value: Server=mssqldb-service,1433;Database=InfyOrderAPI;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
           - name: ServiceBusConnectionString
             value: Endpoint=sb://cleanarchservicebusns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=nFDVtKD2VQIp+PnQRzbS+tcaX6wVs8iOHANsav/DpEM=
-
----

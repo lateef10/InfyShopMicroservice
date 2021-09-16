@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: apigateway-service
 spec:
-#  type: LoadBalancer 
+#  type: LoadBalancer
   selector:
     app: apigateway
   ports:

@@ -29,7 +29,7 @@ spec:
           - name: ServiceUrls__CouponAPI
             value: http://apigateway-service
 
---- 
+---
 
 apiVersion: v1
 kind: Service

@@ -30,7 +30,7 @@ kind: Service
 metadata:
   name: paymentapi-service
 spec:
-#  type: LoadBalancer 
+#  type: LoadBalancer
   selector:
     app: paymentapi
   ports:

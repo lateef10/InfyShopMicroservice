@@ -28,6 +28,7 @@ spec:
             value: Server=mssqldb-service,1433;Database=InfyIdentityServer;Trusted_Connection=false;MultipleActiveResultSets=true;User Id=sa;Password=MyC0m9l&xP@ssw0rd
 
 ---
+#Loadbalancer for public connection
 
 apiVersion: v1
 kind: Service

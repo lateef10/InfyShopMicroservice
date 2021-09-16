@@ -39,11 +39,14 @@ namespace InfyShop.OrderAPI.Messaging
             _messageBus = messageBus;
 
             serviceBusConnectionString = _configuration.GetValue<string>(Constants.ServiceBusConnectionString);
-            subscriptionCheckOut = _configuration.GetValue<string>(Constants.InfyShopOrderSubscription);
-            subscriptionPayment = _configuration.GetValue<string>(Constants.InfyShopOrderPaymentSubscription);
+
             checkoutMessageTopic = _configuration.GetValue<string>(Constants.checkoutmessagetopic);
-            orderPaymentProcessTopic = _configuration.GetValue<string>(Constants.OrderPaymentProcessTopics);
+            subscriptionCheckOut = _configuration.GetValue<string>(Constants.InfyShopOrderSubscription);
+
             orderUpdatePaymentResultTopic = _configuration.GetValue<string>(Constants.OrderUpdatePaymentResultTopic);
+            subscriptionPayment = _configuration.GetValue<string>(Constants.InfyShopOrderPaymentSubscription);
+
+            orderPaymentProcessTopic = _configuration.GetValue<string>(Constants.OrderPaymentProcessTopics);
 
 
             var client = new ServiceBusClient(serviceBusConnectionString);

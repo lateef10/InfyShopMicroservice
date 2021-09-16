@@ -33,9 +33,11 @@ namespace InfyShop.PaymentAPI.Messaging
             _messageBus = messageBus;
 
             serviceBusConnectionString = _configuration.GetValue<string>(Constants.ServiceBusConnectionString);
-            subscriptionPayment = _configuration.GetValue<string>(Constants.InfyShopOrderPaymentSubscription);
             orderupdatepaymentresulttopic = _configuration.GetValue<string>(Constants.OrderUpdatePaymentResultTopic);
+
             orderPaymentProcessTopic = _configuration.GetValue<string>(Constants.OrderPaymentProcessTopic);
+            subscriptionPayment = _configuration.GetValue<string>(Constants.InfyShopOrderPaymentSubscription);
+
 
 
             var client = new ServiceBusClient(serviceBusConnectionString);

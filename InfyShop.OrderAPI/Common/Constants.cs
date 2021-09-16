@@ -24,8 +24,8 @@ namespace InfyShop.OrderAPI.Common
         public const string checkoutqueue = "checkoutqueue";
         public const string checkoutmessagetopic = "checkoutmessagetopic";
         public const string InfyShopOrderSubscription = "InfyShopOrderSubscription";
-        public const string InfyShopOrderPaymentSubscription = "InfyShopOrderPaymentSubscription";
-        public const string OrderPaymentProcessTopics = "orderpaymentprocesstopic";
         public const string OrderUpdatePaymentResultTopic = "orderupdatepaymentresulttopic";
+        public const string InfyShopOrderPaymentSubscription = "InfyShopOrderPaymentSubscription"; //same subscription name for orderpaymentprocesstopic
+        public const string OrderPaymentProcessTopics = "orderpaymentprocesstopic";
     }
 }

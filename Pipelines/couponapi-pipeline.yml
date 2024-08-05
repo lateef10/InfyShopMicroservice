@@ -60,7 +60,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'lateef10InfyShopMicroservice-8996.default'
+    environment: 'lateef10InfyShopMicroservice-1992.stage'
     strategy:
       runOnce:
         deploy:

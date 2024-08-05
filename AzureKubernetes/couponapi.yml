@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: couponapi
-        image: containerimagebuild.azurecr.io/infyshopcouponapi
+        image: containerregistry33.azurecr.io/infyshopcouponapi
         ports:
         - containerPort: 80
         env:

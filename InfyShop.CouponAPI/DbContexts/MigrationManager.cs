@@ -23,7 +23,7 @@ namespace InfyShop.CouponAPI.DbContexts
                         //Using Polly retry policy
                         var retry = Policy.Handle<SqlException>()
                                 .WaitAndRetry(
-                                    retryCount: 4,
+                                    retryCount: 3,
                                     sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), // 2,4,8,16,32 sc
                                     onRetry: (exception, retryCount, context) =>
                                     {

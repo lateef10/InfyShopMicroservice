@@ -38,6 +38,12 @@ stages:
       runOnce:
         deploy:
           steps:
+          - task: CmdLine@2
+            inputs:
+              script: |
+                echo "Listing files in the current directory..."
+                ls -al
+              workingDirectory: '$(Pipeline.Workspace)'
           - task: CopyFiles@2
             inputs:
               SourceFolder: 'AzureKubernetes'
@@ -52,3 +58,7 @@ stages:
               command: 'apply'
               useConfigurationFile: true
               configuration: '$(Pipeline.Workspace)/mssql.yml'
+
+
+
+

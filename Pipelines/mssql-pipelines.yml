@@ -38,27 +38,22 @@ stages:
       runOnce:
         deploy:
           steps:
-          - task: CmdLine@2
-            inputs:
-              script: |
-                echo "Listing files in the current directory..."
-                ls -al
-              workingDirectory: '$(Pipeline.Workspace)'
-          - task: CopyFiles@2
-            inputs:
-              SourceFolder: 'AzureKubernetes'
-              Contents: 'mssql.yml'
-              TargetFolder: '$(Pipeline.Workspace)'
-              OverWrite: true
+          # - task: Kubernetes@1
+          #   inputs:
+          #     connectionType: 'Kubernetes Service Connection'
+          #     kubernetesServiceEndpoint: 'infycluster-default-1216'
+          #     namespace: 'default'
+          #     command: 'apply'
+          #     useConfigurationFile: true
+          #     configuration: '$(Pipeline.Workspace)/mssql.yml'
+
+
+
+
           - task: Kubernetes@1
             inputs:
               connectionType: 'Kubernetes Service Connection'
               kubernetesServiceEndpoint: 'infycluster-default-1216'
               namespace: 'default'
               command: 'apply'
-              useConfigurationFile: true
-              configuration: '$(Pipeline.Workspace)/mssql.yml'
-
-
-
-
+              arguments: '-f mssql.yml'

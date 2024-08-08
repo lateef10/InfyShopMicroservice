@@ -32,7 +32,7 @@ kind: Service
 metadata:
   name: couponapi-service
 spec:
-#  type: LoadBalancer
+  type: LoadBalancer #can be commented to keep it as a cluster ip and not publicly exposed
   selector:
     app: couponapi
   ports:

@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: lateefinfyshopmicroservice 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lateefinfyshopmicroservice
+  template:
+    metadata:
+      labels:
+        app: lateefinfyshopmicroservice 
+    spec:
+      containers:
+        - name: lateefinfyshopmicroservice 
+          image: containerimagebuild.azurecr.io/lateefinfyshopmicroservice
+          ports:
+          - containerPort: 80

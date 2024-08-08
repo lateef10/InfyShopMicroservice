@@ -17,12 +17,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'bb993bdf-8f7f-40a9-8d0a-9522e3442278'
+  dockerRegistryServiceConnection: '26905db8-f4d8-4ed1-b4a5-83dbabbd9943'
   imageRepository: 'infyshopcouponapi'
   containerRegistry: 'containerimagebuild.azurecr.io'
   dockerfilePath: 'InfyShop.CouponAPI/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'containerimagebuild1038b21c-auth'
+  imagePullSecret: 'containerimagebuild14724599-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -60,7 +60,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'lateef10InfyShopMicroservice-1228.dev'
+    environment: 'lateef10InfyShopMicroservice-8496.default'
     strategy:
       runOnce:
         deploy:

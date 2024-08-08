@@ -46,5 +46,3 @@ stages:
               command: 'apply'
               useConfigurationFile: true
               configuration: '$(Pipeline.Workspace)/AzureKubernetes/mssql.yml'
-              secretType: 'dockerRegistry'
-              containerRegistryType: 'Azure Container Registry'

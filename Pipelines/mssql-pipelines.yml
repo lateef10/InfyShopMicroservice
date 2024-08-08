@@ -52,7 +52,7 @@ stages:
               script: |
                 echo "List files in folder"
                 
-                ls
+                ls -al
               workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 

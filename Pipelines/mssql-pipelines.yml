@@ -56,4 +56,4 @@ stages:
               kubernetesServiceEndpoint: 'infycluster-default-1216'
               namespace: 'default'
               command: 'apply'
-              arguments: '-f mssql.yml'
+              arguments: '-f AzureKubernetes/mssql.yml'

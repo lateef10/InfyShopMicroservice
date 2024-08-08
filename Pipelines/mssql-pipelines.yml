@@ -47,7 +47,13 @@ stages:
           #     useConfigurationFile: true
           #     configuration: '$(Pipeline.Workspace)/mssql.yml'
 
-
+          - task: CmdLine@2
+            inputs:
+              script: |
+                echo "List files in folder"
+                
+                ls
+              workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 
           - task: Kubernetes@1
@@ -58,3 +64,5 @@ stages:
               command: 'apply'
               arguments: '-f AzureKubernetes/mssql.yml'
               workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+

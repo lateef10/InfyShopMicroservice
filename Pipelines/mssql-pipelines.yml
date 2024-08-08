@@ -1,0 +1,49 @@
+# Deploy to Azure Kubernetes Service
+# Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+    branches:
+        include:
+        - master
+    paths:
+        include:
+        - AzureKubernetes/mssql.yml
+
+resources:
+- repo: self
+
+variables:
+
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '65baa412-40b1-4d0d-b59c-6db7e9b71530'
+  tag: '$(Build.BuildId)'
+  imagePullSecret: 'containerimagebuild370945a4-auth'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+
+stages:
+- stage: Deploy
+  displayName: Deploy MSSQL
+  dependsOn: Build
+
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    environment: 'lateef10InfyShopMicroservice-2017.default'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: KubernetesManifest@0
+            displayName: Deploy to Kubernetes cluster
+            inputs:
+              action: deploy
+              manifests: |
+                $(Pipeline.Workspace)/AzureKubernetes/mssql.yml
+              
+

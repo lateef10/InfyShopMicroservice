@@ -56,4 +56,5 @@ stages:
               kubernetesServiceEndpoint: 'infycluster-default-1216'
               namespace: 'default'
               command: 'apply'
-              arguments: '-f $(Pipeline.Workspace)/AzureKubernetes/mssql.yml'
+              arguments: '-f mssql.yml'
+              workingDirectory: $(Pipeline.Workspace)/AzureKubernetes

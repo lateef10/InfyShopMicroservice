@@ -27,7 +27,6 @@ variables:
 stages:
 - stage: Deploy
   displayName: Deploy MSSQL
-  dependsOn: Build
 
   jobs:
   - deployment: Deploy

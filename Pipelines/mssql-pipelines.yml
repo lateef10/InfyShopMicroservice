@@ -41,10 +41,10 @@ stages:
           - task: Kubernetes@1
             inputs:
               connectionType: 'Kubernetes Service Connection'
-              kubernetesServiceEndpoint: 'infycluster-default-1216'
+              kubernetesServiceEndpoint: 'infycluster-default'
               namespace: 'default'
               command: 'apply'
               useConfigurationFile: true
-              configuration: 'AzureKubernetes/mssql.yml'
+              configuration: '$(Pipeline.Workspace)/AzureKubernetes/mssql.yml'
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'

@@ -60,8 +60,8 @@ stages:
               kubernetesServiceEndpoint: 'infycluster-default-1216'
               namespace: 'default'
               command: 'apply'
-              arguments: '-f mssql.yml'
-              workingDirectory: '$(build.artifactstagingdirectory)'
+              arguments: '-f AzureKubernetes/mssql.yml'
+              workingDirectory: '$(Build.SourcesDirectory)'
 
 
 # variables:

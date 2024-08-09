@@ -68,7 +68,7 @@ variables:
   dockerRegistryServiceConnection: '6f6d5ef9-0523-4e1f-9d8c-dea06991a56a'
   imageRepository: 'testinfyshopmicroservice'
   containerRegistry: 'containerimagebuild.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/InfShop.Web/Dockerfile'
+  dockerfilePath: 'InfyShop.CouponAPI/Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name

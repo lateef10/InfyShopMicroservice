@@ -50,7 +50,7 @@ stages:
 
           - task: CopyFiles@2
             inputs:
-              SourceFolder: '$(Build.Repository.LocalPath)/AzureKubernetes'
+              SourceFolder: '$(Build.Repository.LocalPath)/InfyShopMicroservice/AzureKubernetes'
               Contents: 'mssql.yml'
               TargetFolder: '$(build.artifactstagingdirectory)'
           - task: Kubernetes@1

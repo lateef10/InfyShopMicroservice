@@ -112,6 +112,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         buildContext: '$(Build.Repository.LocalPath)'
         tags: |
+          latest
           $(tag)
 
     - task: CopyFiles@2

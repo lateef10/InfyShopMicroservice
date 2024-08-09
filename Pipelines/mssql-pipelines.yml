@@ -47,15 +47,12 @@ stages:
           #     useConfigurationFile: true
           #     configuration: '$(Pipeline.Workspace)/mssql.yml'
 
-          - task: CmdLine@2
+
+          - task: CopyFiles@2
             inputs:
-              script: |
-                echo "List files in folder"
-                
-                ls -al
-              workingDirectory: '$(System.DefaultWorkingDirectory)'
-
-
+              SourceFolder: 'AzureKubernetes'
+              Contents: 'mssql.yml'
+              TargetFolder: '$(build.artifactstagingdirectory)'
           - task: Kubernetes@1
             inputs:
               connectionType: 'Kubernetes Service Connection'
@@ -63,6 +60,6 @@ stages:
               namespace: 'default'
               command: 'apply'
               arguments: '-f AzureKubernetes/mssql.yml'
-              workingDirectory: '$(System.DefaultWorkingDirectory)'
+              workingDirectory: '$(build.artifactstagingdirectory)'
 
 

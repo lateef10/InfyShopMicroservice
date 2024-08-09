@@ -67,7 +67,7 @@ stages:
               namespace: 'default'
               command: 'apply'
               arguments: '-f mssql.yml'
-              workingDirectory: '$(build.artifactstagingdirectory)'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/_mssql-pipeline/drop'
 
 
 # variables:

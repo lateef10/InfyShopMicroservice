@@ -54,14 +54,20 @@ stages:
               Contents: 'AzureKubernetes/mssql.yml'
               TargetFolder: '$(build.artifactstagingdirectory)'
               
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+              
           - task: Kubernetes@1
             inputs:
               connectionType: 'Kubernetes Service Connection'
               kubernetesServiceEndpoint: 'infycluster-default-1216'
               namespace: 'default'
               command: 'apply'
-              arguments: '-f AzureKubernetes/mssql.yml'
-              workingDirectory: '$(Build.SourcesDirectory)'
+              arguments: '-f mssql.yml'
+              workingDirectory: '$(build.artifactstagingdirectory)'
 
 
 # variables:

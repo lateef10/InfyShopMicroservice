@@ -2,17 +2,17 @@
 # Build and push image to Azure Container Registry; Deploy to Azure Kubernetes Service
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
-# trigger:
-#     branches:
-#         include:
-#         - master
-#     paths:
-#         include:
-#         - InfyShop.PaymentAPI/*
-#         - AzureKubernetes/paymentapi.yml
+trigger:
+    branches:
+        include:
+        - master
+    paths:
+        include:
+        - InfyShop.PaymentAPI/*
+        - AzureKubernetes/paymentapi.yml
 
-# resources:
-# - repo: self
+resources:
+- repo: self
 
 # variables:
 

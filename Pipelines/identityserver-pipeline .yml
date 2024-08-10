@@ -14,23 +14,90 @@ trigger:
 resources:
 - repo: self
 
-variables:
+# variables:
 
+#   # Container registry service connection established during pipeline creation
+#   dockerRegistryServiceConnection: 'ac84c351-4ba8-48f9-9c9c-c8ae3154ff54'
+#   imageRepository: 'infyshopidentity'
+#   containerRegistry: 'containerimagebuild.azurecr.io'
+#   dockerfilePath: 'InfyShop.Identity/Dockerfile'
+#   tag: '$(Build.BuildId)'
+#   imagePullSecret: 'containerimagebuild1627b785-auth'
+
+#   # Agent VM image name
+#   vmImageName: 'ubuntu-latest'
+
+
+# stages:
+# - stage: Build
+#   displayName: Build stage
+#   jobs:
+#   - job: Build
+#     displayName: Build
+#     pool:
+#       vmImage: $(vmImageName)
+#     steps:
+#     - task: Docker@2
+#       displayName: Build and push an image to container registry
+#       inputs:
+#         command: buildAndPush
+#         repository: $(imageRepository)
+#         dockerfile: $(dockerfilePath)
+#         containerRegistry: $(dockerRegistryServiceConnection)
+#         buildContext: '$(Build.Repository.LocalPath)'
+#         tags: |
+#           $(tag)
+
+#     - upload: AzureKubernetes
+#       artifact: AzureKubernetes
+
+# - stage: Deploy
+#   displayName: Deploy stage
+#   dependsOn: Build
+
+#   jobs:
+#   - deployment: Deploy
+#     displayName: Deploy
+#     pool:
+#       vmImage: $(vmImageName)
+#     environment: 'lateef10InfyShopMicroservice-8996.default'
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
+#           - task: KubernetesManifest@0
+#             displayName: Create imagePullSecret
+#             inputs:
+#               action: createSecret
+#               secretName: $(imagePullSecret)
+#               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
+
+#           - task: KubernetesManifest@0
+#             displayName: Deploy to Kubernetes cluster
+#             inputs:
+#               action: deploy
+#               manifests: |
+#                 $(Pipeline.Workspace)/AzureKubernetes/identityserver.yml
+#               imagePullSecrets: |
+#                 $(imagePullSecret)
+#               containers: |
+#                 $(containerRegistry)/$(imageRepository):$(tag)
+
+
+variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'ac84c351-4ba8-48f9-9c9c-c8ae3154ff54'
+  dockerRegistryServiceConnection: '5f48f2cf-c7c5-4b97-8f55-62158a2dc7e3'
   imageRepository: 'infyshopidentity'
   containerRegistry: 'containerimagebuild.azurecr.io'
   dockerfilePath: 'InfyShop.Identity/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'containerimagebuild1627b785-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
-
 stages:
 - stage: Build
-  displayName: Build stage
+  displayName: Build and push stage
   jobs:
   - job: Build
     displayName: Build
@@ -46,40 +113,17 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         buildContext: '$(Build.Repository.LocalPath)'
         tags: |
+          latest
           $(tag)
 
-    - upload: AzureKubernetes
-      artifact: AzureKubernetes
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: 'AzureKubernetes'
+        Contents: 'identityserver.yml'
+        TargetFolder: '$(build.artifactstagingdirectory)'
 
-- stage: Deploy
-  displayName: Deploy stage
-  dependsOn: Build
-
-  jobs:
-  - deployment: Deploy
-    displayName: Deploy
-    pool:
-      vmImage: $(vmImageName)
-    environment: 'lateef10InfyShopMicroservice-8996.default'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
-
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              manifests: |
-                $(Pipeline.Workspace)/AzureKubernetes/identityserver.yml
-              imagePullSecrets: |
-                $(imagePullSecret)
-              containers: |
-                $(containerRegistry)/$(imageRepository):$(tag)
-
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'

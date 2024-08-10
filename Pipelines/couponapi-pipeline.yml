@@ -85,7 +85,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '6f6d5ef9-0523-4e1f-9d8c-dea06991a56a'
+  dockerRegistryServiceConnection: '5f48f2cf-c7c5-4b97-8f55-62158a2dc7e3'
   imageRepository: 'infyshopcouponapi'
   containerRegistry: 'containerimagebuild.azurecr.io'
   dockerfilePath: 'InfyShop.CouponAPI/Dockerfile'

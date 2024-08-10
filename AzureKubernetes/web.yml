@@ -21,7 +21,7 @@ spec:
         - containerPort: 80
         env:
           - name: ServiceUrls__IdentityAPI
-            value: http://13.91.125.217
+            value: http://identityserver-service
           - name: ServiceUrls__ProductAPI
             value: http://apigateway-service
           - name: ServiceUrls__ShoppingCartAPI

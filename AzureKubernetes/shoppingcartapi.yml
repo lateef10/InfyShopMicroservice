@@ -34,7 +34,7 @@ kind: Service
 metadata:
   name: shoppingcartapi-service
 spec:
-#  type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: shoppingcartapi
   ports:

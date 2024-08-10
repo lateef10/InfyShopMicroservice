@@ -28,7 +28,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'lateef10InfyShopMicroservice-2017.default'
+    environment: 'lateef10InfyShopMicroservice-1268.default'
     strategy:
       runOnce:
         deploy:
@@ -36,7 +36,7 @@ stages:
           - task: Kubernetes@1
             inputs:
               connectionType: 'Kubernetes Service Connection'
-              kubernetesServiceEndpoint: 'infycluster-default-1216'
+              kubernetesServiceEndpoint: 'infycluster-tf'
               namespace: 'default'
               command: 'apply'
               useConfigurationFile: true

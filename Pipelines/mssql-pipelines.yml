@@ -86,12 +86,28 @@ stages:
           #             targetPort: 1433
 
 
+          - task: KubectlInstaller@0
+            inputs:
+              kubectlVersion: 'latest'
 
           - task: PublishPipelineArtifact@1
             displayName: Publish Artifacts
             inputs:
-              targetPath: '$(Pipeline.Workspace)/AzureKubernetes' #'$(System.DefaultWorkingDirectory)/AzureKubernetes'
+              targetPath: '$(System.DefaultWorkingDirectory)/AzureKubernetes' #'$(Pipeline.Workspace)/AzureKubernetes'
               artifact: 'mssql-manifests-out'
               publishLocation: 'pipeline'
+
+          - task: Kubernetes@1
+            inputs:
+              connectionType: 'Kubernetes Service Connection'
+              kubernetesServiceEndpoint: 'infycluster-tf'
+              namespace: 'default'
+              command: 'apply'
+              arguments: 'mssql.yml'
+              secretType: 'dockerRegistry'
+              containerRegistryType: 'Azure Container Registry'
+              workingDirectory: '$(System.DefaultWorkingDirectory)/AzureKubernetes'
+
+
 
 

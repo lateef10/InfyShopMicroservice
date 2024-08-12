@@ -90,7 +90,7 @@ stages:
           - task: PublishPipelineArtifact@1
             displayName: Publish Artifacts
             inputs:
-              targetPath: '$(System.DefaultWorkingDirectory)/AzureKubernetes'
+              targetPath: '$(Pipeline.Workspace)/AzureKubernetes' #'$(System.DefaultWorkingDirectory)/AzureKubernetes'
               artifact: 'mssql-manifests-out'
               publishLocation: 'pipeline'
 

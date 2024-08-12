@@ -33,62 +33,62 @@ stages:
       runOnce:
         deploy:
           steps:
-          # - task: Kubernetes@1
-          #   inputs:
-          #     connectionType: 'Kubernetes Service Connection'
-          #     kubernetesServiceEndpoint: 'infycluster-tf'
-          #     namespace: 'default'
-          #     command: 'apply'
-          #     useConfigurationFile: true
-          #     configurationType: 'inline'
-          #     inline: |
-          #       apiVersion: apps/v1
-          #       kind: Deployment
-          #       metadata:
-          #         name: mssqldb
-          #         labels:
-          #           app: mssqldb
-          #       spec:
-          #         replicas: 1
-          #         selector:
-          #           matchLabels:
-          #             app: mssqldb
-          #         template:
-          #           metadata:
-          #             labels:
-          #               app: mssqldb
-          #           spec:
-          #             containers:
-          #             - name: mssqldb
-          #               image: mcr.microsoft.com/mssql/server:2017-latest
-          #               ports:
-          #               - containerPort: 1433
-          #               env:
-          #                 - name: SA_PASSWORD
-          #                   value: MyC0m9l&xP@ssw0rd
-          #                 - name: ACCEPT_EULA
-          #                   value: "Y"
-          #                 - name: MSSQL_PID 
-          #                   value: "Developer"
-                
-          #       ---
-                
-          #       apiVersion: v1
-          #       kind: Service
-          #       metadata:
-          #         name: mssqldb-service
-          #       spec:
-          #         type: LoadBalancer
-          #         selector:
-          #           app: mssqldb
-          #         ports:
-          #           - port: 1433
-          #             targetPort: 1433
-
-
-          - task: KubectlInstaller@0
+          - task: Kubernetes@1
             inputs:
-              kubectlVersion: 'latest'
+              connectionType: 'Kubernetes Service Connection'
+              kubernetesServiceEndpoint: 'infycluster-tf'
+              namespace: 'default'
+              command: 'apply'
+              useConfigurationFile: true
+              configurationType: 'inline'
+              inline: |
+                apiVersion: apps/v1
+                kind: Deployment
+                metadata:
+                  name: mssqldb
+                  labels:
+                    app: mssqldb
+                spec:
+                  replicas: 1
+                  selector:
+                    matchLabels:
+                      app: mssqldb
+                  template:
+                    metadata:
+                      labels:
+                        app: mssqldb
+                    spec:
+                      containers:
+                      - name: mssqldb
+                        image: mcr.microsoft.com/mssql/server:2017-latest
+                        ports:
+                        - containerPort: 1433
+                        env:
+                          - name: SA_PASSWORD
+                            value: MyC0m9l&xP@ssw0rd
+                          - name: ACCEPT_EULA
+                            value: "Y"
+                          - name: MSSQL_PID 
+                            value: "Developer"
+                
+                ---
+                
+                apiVersion: v1
+                kind: Service
+                metadata:
+                  name: mssqldb-service
+                spec:
+                  type: LoadBalancer
+                  selector:
+                    app: mssqldb
+                  ports:
+                    - port: 1433
+                      targetPort: 1433
+
+
+          # - task: KubectlInstaller@0
+          #   inputs:
+          #     kubectlVersion: 'latest'
 
           # - task: PublishPipelineArtifact@1
           #   displayName: Publish Artifacts
@@ -97,16 +97,16 @@ stages:
           #     artifact: 'mssql-manifests-out'
           #     publishLocation: 'pipeline'
 
-          - task: Kubernetes@1
-            inputs:
-              connectionType: 'Kubernetes Service Connection'
-              kubernetesServiceEndpoint: 'infycluster-tf'
-              namespace: 'default'
-              command: 'apply'
-              arguments: 'mssql.yml'
-              secretType: 'dockerRegistry'
-              containerRegistryType: 'Azure Container Registry'
-              workingDirectory: '$(Build.SourcesDirectory)/AzureKubernetes'
+          # - task: Kubernetes@1
+          #   inputs:
+          #     connectionType: 'Kubernetes Service Connection'
+          #     kubernetesServiceEndpoint: 'infycluster-tf'
+          #     namespace: 'default'
+          #     command: 'apply'
+          #     arguments: 'mssql.yml'
+          #     secretType: 'dockerRegistry'
+          #     containerRegistryType: 'Azure Container Registry'
+          #     workingDirectory: '$(Build.SourcesDirectory)/AzureKubernetes'
 
 
 

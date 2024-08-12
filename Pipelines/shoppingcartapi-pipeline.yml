@@ -87,7 +87,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '5f48f2cf-c7c5-4b97-8f55-62158a2dc7e3'
+  dockerRegistryServiceConnection: '44c4dfbc-24a2-4a92-8a43-f013ad3cdeb2'
   imageRepository: 'infyshopshoppingcartapi'
   containerRegistry: 'containerimagebuild.azurecr.io'
   dockerfilePath: 'InfyShop.ShoppingCartAPI/Dockerfile'

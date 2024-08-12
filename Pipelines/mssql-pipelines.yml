@@ -106,7 +106,7 @@ stages:
               arguments: 'mssql.yml'
               secretType: 'dockerRegistry'
               containerRegistryType: 'Azure Container Registry'
-              workingDirectory: '$(System.DefaultWorkingDirectory)/AzureKubernetes'
+              workingDirectory: '$(Build.SourcesDirectory)/AzureKubernetes'
 
 
 

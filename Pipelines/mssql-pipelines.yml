@@ -36,7 +36,7 @@ stages:
           - task: Kubernetes@1
             inputs:
               connectionType: 'Kubernetes Service Connection'
-              kubernetesServiceEndpoint: 'infycluster-tf2'
+              kubernetesServiceEndpoint: 'infycluster-tf'
               namespace: 'default'
               command: 'apply'
               useConfigurationFile: true

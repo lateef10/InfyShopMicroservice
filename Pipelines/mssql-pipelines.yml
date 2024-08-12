@@ -90,12 +90,12 @@ stages:
             inputs:
               kubectlVersion: 'latest'
 
-          - task: PublishPipelineArtifact@1
-            displayName: Publish Artifacts
-            inputs:
-              targetPath: '$(System.DefaultWorkingDirectory)/AzureKubernetes' #'$(Pipeline.Workspace)/AzureKubernetes'
-              artifact: 'mssql-manifests-out'
-              publishLocation: 'pipeline'
+          # - task: PublishPipelineArtifact@1
+          #   displayName: Publish Artifacts
+          #   inputs:
+          #     targetPath: '$(System.DefaultWorkingDirectory)/AzureKubernetes' #'$(Pipeline.Workspace)/AzureKubernetes'
+          #     artifact: 'mssql-manifests-out'
+          #     publishLocation: 'pipeline'
 
           - task: Kubernetes@1
             inputs:

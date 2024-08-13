@@ -86,7 +86,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '44c4dfbc-24a2-4a92-8a43-f013ad3cdeb2'
+  dockerRegistryServiceConnection: 'a04fa82c-6598-4bf0-bd94-bb91f1d5a117'
   imageRepository: 'infyshopgatewaysolution'
   containerRegistry: 'containerimagebuild.azurecr.io'
   dockerfilePath: 'InfyShop.GatewaySolution/Dockerfile'
